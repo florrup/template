@@ -27,4 +27,5 @@ class QueueLinkedList<T> implements Queue<T> {
     public void remove() {
         list.deleteFirst();
     }
+
 }

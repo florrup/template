@@ -33,7 +33,9 @@ class LinkedList<T> {
     }
 
     private int countNodes(Node node) {
-        if (node == null) return 0;
+        if (node == null) {
+            return 0;
+        }
         return (1 + countNodes(node.next));
     }
 

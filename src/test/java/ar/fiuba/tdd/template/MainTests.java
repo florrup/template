@@ -185,31 +185,17 @@ public class MainTests {
     @Test
     public void deleteNumerousValuesFromQueue() {
         QueueLinkedList<Integer> queue = new QueueLinkedList<>();
-        int firstValue = 88;
-        int numFirstValue = 125;
-        for (int i = 0; i < numFirstValue; i++) {
-            queue.add(firstValue);
-        }
-        int secondValue = 3;
-        int numSecondValue = 500;
-        for (int i = 0; i < numSecondValue; i++) {
-            queue.add(secondValue);
+        int value = 88, numValue = 125;
+        for (int i = 0; i < numValue; i++) {
+            queue.add(value);
         }
 
         queue.remove();
         assertFalse(queue.isEmpty());
-        assertEquals(queue.size(), numFirstValue + numSecondValue - 1);
-        assertEquals(queue.top(), (Integer)firstValue); // there are still maxStrings - 1
+        assertEquals(queue.size(), numValue - 1);
+        assertEquals(queue.top(), (Integer)value); // there are still maxStrings - 1
 
-        for (int i = 0; i < numFirstValue - 1; i++) {
-            queue.remove();
-        }
-
-        assertFalse(queue.isEmpty());
-        assertEquals(queue.size(), numSecondValue);
-        assertEquals(queue.top(), (Integer)secondValue);
-
-        for (int i = 0; i < numSecondValue; i++) {
+        for (int i = 0; i < numValue - 1; i++) {
             queue.remove();
         }
 
@@ -220,8 +206,8 @@ public class MainTests {
             queue.remove();
             assert false;
         } catch (AssertionError e) {
-            System.out.println("The " + (numFirstValue + numSecondValue) + " values have been removed. The queue is now empty.\n" +
-                    "Top value cannot be removed");
+            System.out.println("The " + numValue + " values have been removed. The queue is now empty.\n"
+                    + "Top value cannot be removed");
             assert true; // Exception caught
         }
     }
