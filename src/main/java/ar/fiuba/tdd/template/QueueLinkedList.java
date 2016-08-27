@@ -1,6 +1,6 @@
 package ar.fiuba.tdd.template;
 
-public class QueueLinkedList<T> implements Queue<T> {
+class QueueLinkedList<T> implements Queue<T> {
 
     private LinkedList<T> list;
 

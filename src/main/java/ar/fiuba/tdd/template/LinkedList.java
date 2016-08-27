@@ -1,12 +1,13 @@
 package ar.fiuba.tdd.template;
 
-public class LinkedList<T> {
+class LinkedList<T> {
 
-    private Node<T> first;
+    private Node first;
 
-    private class Node<T> {
+    private class Node {
+
         private T value;
-        private Node<T> next;
+        private Node next;
 
         private Node(T value) {
             this.value = value;
@@ -14,9 +15,9 @@ public class LinkedList<T> {
         }
 
         // Adds new node at the end of the list
-        public void addNext(T value) {
+        void addNext(T value) {
             if (this.next == null) {
-                this.next = new Node<>(value);
+                this.next = new Node(value);
             } else {
                 this.next.addNext(value);
             }
@@ -27,28 +28,28 @@ public class LinkedList<T> {
         first = null;
     }
 
-    public int size() {
+    int size() {
         return countNodes(this.first);
     }
 
-    private int countNodes(Node<T> node) {
+    private int countNodes(Node node) {
         if (node == null) return 0;
         return (1 + countNodes(node.next));
     }
 
-    public boolean isEmpty() {
+    boolean isEmpty() {
         return (this.size() == 0);
     }
 
-    public void add(T value) {
+    void add(T value) {
         if (!this.isEmpty()) {
             this.first.addNext(value); // add value at the end of the list to the last node
         } else {
-            this.first = new Node<>(value);
+            this.first = new Node(value);
         }
     }
 
-    public void deleteFirst() throws AssertionError {
+    void deleteFirst() throws AssertionError {
         if (this.isEmpty()) {
             System.out.println("Trying to delete from an empty list");
             throw new AssertionError();
@@ -57,12 +58,12 @@ public class LinkedList<T> {
         }
     }
 
-    public T firstValue() throws AssertionError {
+    T firstValue() throws AssertionError {
         if (this.isEmpty()) {
             System.out.println("Trying to read from an empty list");
             throw new AssertionError();
         } else {
-            return ((T) (this.first.value));
+            return this.first.value;
         }
     }
 

@@ -62,14 +62,14 @@ public class MainTests {
         for (int i = 0; i < numFirstValue; i++) {
             list.add(firstValue);
         }
-        String secondString = "florencia";
-        int numSecondString = 50;
-        for (int i = 0; i < numSecondString; i++) {
-            list.add(secondString);
+        String secondValue = "florencia";
+        int numSecondValue = 50;
+        for (int i = 0; i < numSecondValue; i++) {
+            list.add(secondValue);
         }
 
         assertFalse(list.isEmpty());
-        assertEquals(list.size(), numFirstValue + numSecondString);
+        assertEquals(list.size(), numFirstValue + numSecondValue);
         assertEquals(list.firstValue(), firstValue); // should be "flor"
     }
 
