@@ -46,7 +46,7 @@ public class LinkedList<T> {
 
     public void add(T value) {
         if (!this.isEmpty()) {
-            this.first.addNext(value);
+            this.first.addNext(value); // add value at the end of the list to the last node
         } else {
             Node node = new Node(value);
             this.first = node;

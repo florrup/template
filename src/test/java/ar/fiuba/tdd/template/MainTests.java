@@ -114,4 +114,116 @@ public class MainTests {
             assert true; // Exception caught
         }
     }
+
+    /* Testing QueueLinkedList */
+
+    @Test
+    public void createEmptyQueue() {
+        QueueLinkedList queue = new QueueLinkedList();
+        assertTrue(queue.isEmpty());
+    }
+
+    @Test
+    public void createQueueSizeZero() {
+        QueueLinkedList queue = new QueueLinkedList();
+        assertEquals(queue.size(), 0);
+    }
+
+    @Test
+    public void emptyQueueHasNoValue() {
+        QueueLinkedList queue = new QueueLinkedList();
+        try {
+            queue.top();
+            assert false;
+        } catch (AssertionError e) {
+            System.out.println("The queue is empty, so top value cannot be read");
+            assert true;
+        }
+    }
+
+    @Test
+    public void emptyQueueNotDeleteable() {
+        QueueLinkedList queue = new QueueLinkedList();
+        try {
+            queue.remove();
+            assert false;
+        } catch (AssertionError e) {
+            System.out.println("The queue is empty, so top value cannot be removed");
+            assert true;
+        }
+    }
+
+    @Test
+    public void addValueToQueue() {
+        QueueLinkedList queue = new QueueLinkedList();
+        String value = "testing";
+        queue.add(value);
+        assertFalse(queue.isEmpty());
+        assertEquals(queue.size(), 1);
+        assertEquals(queue.top(), value);
+    }
+
+    @Test
+    public void addNumerousValuesToQueue() {
+        QueueLinkedList queue = new QueueLinkedList();
+        String stringValue = "flor";
+        int maxStrings = 125;
+        for (int i = 0; i < maxStrings; i++) {
+            queue.add(stringValue);
+        }
+        int numericValue = 3;
+        int maxNumbers = 500;
+        for (int i = 0; i < maxNumbers; i++) {
+            queue.add(numericValue);
+        }
+
+        assertFalse(queue.isEmpty());
+        assertEquals(queue.size(), maxStrings + maxNumbers);
+        assertEquals(queue.top(), stringValue); // should be "flor"
+    }
+
+
+    @Test
+    public void deleteNumerousValuesFromQueue() {
+        QueueLinkedList queue = new QueueLinkedList();
+        String stringValue = "flor";
+        int maxStrings = 125;
+        for (int i = 0; i < maxStrings; i++) {
+            queue.add(stringValue);
+        }
+        int numericValue = 3;
+        int maxNumbers = 500;
+        for (int i = 0; i < maxNumbers; i++) {
+            queue.add(numericValue);
+        }
+
+        queue.remove();
+        assertFalse(queue.isEmpty());
+        assertEquals(queue.size(), maxStrings + maxNumbers - 1);
+        assertEquals(queue.top(), stringValue); // there are still maxStrings - 1
+
+        for (int i = 0; i < maxStrings - 1; i++) {
+            queue.remove();
+        }
+
+        assertFalse(queue.isEmpty());
+        assertEquals(queue.size(), maxNumbers);
+        assertEquals(queue.top(), numericValue);
+
+        for (int i = 0; i < maxNumbers; i++) {
+            queue.remove();
+        }
+
+        assertTrue(queue.isEmpty()); // queue is now empty
+        assertEquals(queue.size(), 0);
+
+        try {
+            queue.remove();
+            assert false;
+        } catch (AssertionError e) {
+            System.out.println("The " + (maxStrings + maxNumbers) + " values have been removed. The queue is now empty.\n" +
+                    "Top value cannot be removed");
+            assert true; // Exception caught
+        }
+    }
 }
