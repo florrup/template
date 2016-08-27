@@ -3,8 +3,8 @@ package ar.fiuba.tdd.template;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class MainTests {
 
@@ -77,42 +77,22 @@ public class MainTests {
     public void deleteNumerousValuesFromLinkedList() {
         LinkedList<Integer> list = new LinkedList<>();
         int firstValue = 80;
-        int numFirstValue = 5;
+        int numFirstValue = 50;
         for (int i = 0; i < numFirstValue; i++) {
             list.add(firstValue);
-        }
-        int secondValue = 4;
-        int numSecondValue = 50;
-        for (int i = 0; i < numSecondValue; i++) {
-            list.add(secondValue);
         }
 
         list.deleteFirst();
         assertFalse(list.isEmpty());
-        assertEquals(list.size(), numFirstValue + numSecondValue - 1);
-        assertEquals(list.firstValue(), (Integer)firstValue); // there are still maxStrings - 1
+        assertEquals(list.size(), numFirstValue - 1);
+        assertEquals(list.firstValue(), (Integer)firstValue); // there are still numFirstValue - 1
 
         for (int i = 0; i < numFirstValue - 1; i++) {
             list.deleteFirst();
         }
 
-        assertFalse(list.isEmpty());
-        assertEquals(list.size(), numSecondValue);
-        assertEquals(list.firstValue(), (Integer)secondValue);
-
-        for (int i = 0; i < numSecondValue; i++) {
-            list.deleteFirst();
-        }
-
         assertTrue(list.isEmpty());
         assertEquals(list.size(), 0);
-
-        try {
-            list.deleteFirst();
-            assert false;
-        } catch (AssertionError e) {
-            assert true; // Exception caught
-        }
     }
 
     /* Testing QueueLinkedList */
@@ -185,7 +165,8 @@ public class MainTests {
     @Test
     public void deleteNumerousValuesFromQueue() {
         QueueLinkedList<Integer> queue = new QueueLinkedList<>();
-        int value = 88, numValue = 125;
+        int value = 88;
+        int numValue = 125;
         for (int i = 0; i < numValue; i++) {
             queue.add(value);
         }
@@ -193,7 +174,7 @@ public class MainTests {
         queue.remove();
         assertFalse(queue.isEmpty());
         assertEquals(queue.size(), numValue - 1);
-        assertEquals(queue.top(), (Integer)value); // there are still maxStrings - 1
+        assertEquals(queue.top(), (Integer)value); // there are still numValue - 1
 
         for (int i = 0; i < numValue - 1; i++) {
             queue.remove();
@@ -201,14 +182,5 @@ public class MainTests {
 
         assertTrue(queue.isEmpty()); // queue is now empty
         assertEquals(queue.size(), 0);
-
-        try {
-            queue.remove();
-            assert false;
-        } catch (AssertionError e) {
-            System.out.println("The " + numValue + " values have been removed. The queue is now empty.\n"
-                    + "Top value cannot be removed");
-            assert true; // Exception caught
-        }
     }
 }
