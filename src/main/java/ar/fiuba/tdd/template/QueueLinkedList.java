@@ -1,15 +1,11 @@
 package ar.fiuba.tdd.template;
 
-/**
- * Created by florencia on 27/08/16.
- */
-
 public class QueueLinkedList<T> implements Queue<T> {
 
     private LinkedList<T> list;
 
-    public QueueLinkedList() {
-        list = new LinkedList<T>();
+    QueueLinkedList() {
+        list = new LinkedList<>();
     }
 
     public boolean isEmpty() {

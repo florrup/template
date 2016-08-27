@@ -1,10 +1,6 @@
 package ar.fiuba.tdd.template;
 
-/**
- * Created by florencia on 27/08/16.
- */
-
-public interface Queue<T> {
+interface Queue<T> {
     boolean isEmpty();
     int size();
     void add(T item); // agregar un item

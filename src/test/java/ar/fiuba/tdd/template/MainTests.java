@@ -46,61 +46,61 @@ public class MainTests {
 
     @Test
     public void addValueToLinkedList() {
-        LinkedList list = new LinkedList();
+        LinkedList<Integer> list = new LinkedList<>();
         int value = 5;
         list.add(value);
         assertFalse(list.isEmpty());
         assertEquals(list.size(), 1);
-        assertEquals(list.firstValue(), value);
+        assertEquals(list.firstValue(), (Integer)value);
     }
 
     @Test
     public void addNumerousValuesToLinkedList() {
-        LinkedList list = new LinkedList();
-        String stringValue = "flor";
-        int maxStrings = 5;
-        for (int i = 0; i < maxStrings; i++) {
-            list.add(stringValue);
+        LinkedList<String> list = new LinkedList<>();
+        String firstValue = "flor";
+        int numFirstValue = 5;
+        for (int i = 0; i < numFirstValue; i++) {
+            list.add(firstValue);
         }
-        int numericValue = 4;
-        int maxNumbers = 50;
-        for (int i = 0; i < maxNumbers; i++) {
-            list.add(numericValue);
+        String secondString = "florencia";
+        int numSecondString = 50;
+        for (int i = 0; i < numSecondString; i++) {
+            list.add(secondString);
         }
 
         assertFalse(list.isEmpty());
-        assertEquals(list.size(), maxStrings + maxNumbers);
-        assertEquals(list.firstValue(), stringValue); // should be "flor"
+        assertEquals(list.size(), numFirstValue + numSecondString);
+        assertEquals(list.firstValue(), firstValue); // should be "flor"
     }
 
     @Test
     public void deleteNumerousValuesFromLinkedList() {
-        LinkedList list = new LinkedList();
-        String stringValue = "flor";
-        int maxStrings = 5;
-        for (int i = 0; i < maxStrings; i++) {
-            list.add(stringValue);
+        LinkedList<Integer> list = new LinkedList<>();
+        int firstValue = 80;
+        int numFirstValue = 5;
+        for (int i = 0; i < numFirstValue; i++) {
+            list.add(firstValue);
         }
-        int numericValue = 4;
-        int maxNumbers = 50;
-        for (int i = 0; i < maxNumbers; i++) {
-            list.add(numericValue);
+        int secondValue = 4;
+        int numSecondValue = 50;
+        for (int i = 0; i < numSecondValue; i++) {
+            list.add(secondValue);
         }
 
         list.deleteFirst();
         assertFalse(list.isEmpty());
-        assertEquals(list.size(), maxStrings + maxNumbers - 1);
-        assertEquals(list.firstValue(), stringValue); // there are still maxStrings - 1
+        assertEquals(list.size(), numFirstValue + numSecondValue - 1);
+        assertEquals(list.firstValue(), (Integer)firstValue); // there are still maxStrings - 1
 
-        for (int i = 0; i < maxStrings - 1; i++) {
+        for (int i = 0; i < numFirstValue - 1; i++) {
             list.deleteFirst();
         }
 
         assertFalse(list.isEmpty());
-        assertEquals(list.size(), maxNumbers);
-        assertEquals(list.firstValue(), numericValue);
+        assertEquals(list.size(), numSecondValue);
+        assertEquals(list.firstValue(), (Integer)secondValue);
 
-        for (int i = 0; i < maxNumbers; i++) {
+        for (int i = 0; i < numSecondValue; i++) {
             list.deleteFirst();
         }
 
@@ -142,7 +142,7 @@ public class MainTests {
     }
 
     @Test
-    public void emptyQueueNotDeleteable() {
+    public void emptyQueueNotDeletable() {
         QueueLinkedList queue = new QueueLinkedList();
         try {
             queue.remove();
@@ -155,7 +155,7 @@ public class MainTests {
 
     @Test
     public void addValueToQueue() {
-        QueueLinkedList queue = new QueueLinkedList();
+        QueueLinkedList<String> queue = new QueueLinkedList<>();
         String value = "testing";
         queue.add(value);
         assertFalse(queue.isEmpty());
@@ -165,52 +165,51 @@ public class MainTests {
 
     @Test
     public void addNumerousValuesToQueue() {
-        QueueLinkedList queue = new QueueLinkedList();
-        String stringValue = "flor";
-        int maxStrings = 125;
-        for (int i = 0; i < maxStrings; i++) {
-            queue.add(stringValue);
+        QueueLinkedList<String> queue = new QueueLinkedList<>();
+        String firstValue = "flor";
+        int numFirstValue = 125;
+        for (int i = 0; i < numFirstValue; i++) {
+            queue.add(firstValue);
         }
-        int numericValue = 3;
-        int maxNumbers = 500;
-        for (int i = 0; i < maxNumbers; i++) {
-            queue.add(numericValue);
+        String secondValue = "florencia111";
+        int numSecondValue = 500;
+        for (int i = 0; i < numSecondValue; i++) {
+            queue.add(secondValue);
         }
 
         assertFalse(queue.isEmpty());
-        assertEquals(queue.size(), maxStrings + maxNumbers);
-        assertEquals(queue.top(), stringValue); // should be "flor"
+        assertEquals(queue.size(), numFirstValue + numSecondValue);
+        assertEquals(queue.top(), firstValue); // should be "flor"
     }
-
 
     @Test
     public void deleteNumerousValuesFromQueue() {
-        QueueLinkedList queue = new QueueLinkedList();
-        String stringValue = "flor";
-        int maxStrings = 125;
-        for (int i = 0; i < maxStrings; i++) {
-            queue.add(stringValue);
+        QueueLinkedList<Integer> queue = new QueueLinkedList<>();
+        int firstValue = 88;
+        int numFirstValue = 125;
+        for (int i = 0; i < numFirstValue; i++) {
+            queue.add(firstValue);
         }
-        int numericValue = 3;
-        int maxNumbers = 500;
-        for (int i = 0; i < maxNumbers; i++) {
-            queue.add(numericValue);
+        int secondValue = 3;
+        int numSecondValue = 500;
+        for (int i = 0; i < numSecondValue; i++) {
+            queue.add(secondValue);
         }
 
         queue.remove();
         assertFalse(queue.isEmpty());
-        assertEquals(queue.size(), maxStrings + maxNumbers - 1);
-        assertEquals(queue.top(), stringValue); // there are still maxStrings - 1
+        assertEquals(queue.size(), numFirstValue + numSecondValue - 1);
+        assertEquals(queue.top(), (Integer)firstValue); // there are still maxStrings - 1
 
-        for (int i = 0; i < maxStrings - 1; i++) {
+        for (int i = 0; i < numFirstValue - 1; i++) {
             queue.remove();
         }
 
         assertFalse(queue.isEmpty());
-        assertEquals(queue.size(), maxNumbers);
-        assertEquals(queue.top(), numericValue);
+        assertEquals(queue.size(), numSecondValue);
+        assertEquals(queue.top(), (Integer)secondValue);
 
-        for (int i = 0; i < maxNumbers; i++) {
+        for (int i = 0; i < numSecondValue; i++) {
             queue.remove();
         }
 
@@ -221,7 +220,7 @@ public class MainTests {
             queue.remove();
             assert false;
         } catch (AssertionError e) {
-            System.out.println("The " + (maxStrings + maxNumbers) + " values have been removed. The queue is now empty.\n" +
+            System.out.println("The " + (numFirstValue + numSecondValue) + " values have been removed. The queue is now empty.\n" +
                     "Top value cannot be removed");
             assert true; // Exception caught
         }

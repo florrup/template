@@ -1,33 +1,29 @@
 package ar.fiuba.tdd.template;
 
-/**
- * Created by florencia on 27/08/16.
- */
-
 public class LinkedList<T> {
 
-    private Node first;
+    private Node<T> first;
 
     private class Node<T> {
         private T value;
-        private Node next;
+        private Node<T> next;
 
-        public Node(T value) {
+        private Node(T value) {
             this.value = value;
             this.next = null;
         }
 
-        // Agrego al final el next node
+        // Adds new node at the end of the list
         public void addNext(T value) {
             if (this.next == null) {
-                this.next = new Node(value);
+                this.next = new Node<>(value);
             } else {
                 this.next.addNext(value);
             }
         }
     }
 
-    public LinkedList() {
+    LinkedList() {
         first = null;
     }
 
@@ -48,8 +44,7 @@ public class LinkedList<T> {
         if (!this.isEmpty()) {
             this.first.addNext(value); // add value at the end of the list to the last node
         } else {
-            Node node = new Node(value);
-            this.first = node;
+            this.first = new Node<>(value);
         }
     }
 
